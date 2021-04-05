@@ -20,6 +20,8 @@ pipeline {
         
         stage('Go Releaser tag creation') {
             steps {
+                git config --global user.email "ssmathistad@mail.csuchico.edu"
+                git config --global user.name "ssmathistad"
                 sh "git commit"
                 sh "git tag -a $params.VERSION -m $params.VERSIONMESSAGE"
                 sh "git push origin $params.VERSION"

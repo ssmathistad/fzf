@@ -20,6 +20,7 @@ pipeline {
         
         stage('Go Releaser tag creation') {
             steps {
+                sh "git commit"
                 sh "git tag -a $params.VERSION -m $params.VERSIONMESSAGE"
                 sh "git push origin $params.VERSION"
             }

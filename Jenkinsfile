@@ -22,14 +22,22 @@ pipeline {
             steps {
                 //sh "git config --global user.email 'ssmathistad@mail.csuchico.edu'"
                 //sh "git config --global user.name 'ssmathistad'"
-                sh "git config --global user.email \"ssmathistad@mail.csuchico.edu\""
-                sh "git config --global user.name \"ssmathistad\""
+                //sh "git config --global user.email \"ssmathistad@mail.csuchico.edu\""
+                //sh "git config --global user.name \"ssmathistad\""
                 //sh "touch Jenkinsfile"
                 //sh "git commit"
                 //sh "git tag -a $params.VERSION -m $params.VERSIONMESSAGE"
-                sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""
+
+                withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    //sh("git tag -a some_tag -m 'Jenkins'")
+                    sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""
+                    //sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO> --tags')
+                    sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/ssmathistad/fzf.git $params.VERSION"
+                }
+
+                ////sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""
                 //sh "git remote add origin git@github.com:ssmathistad/fzf.git"
-                sh "git push origin master $params.VERSION"
+                ////sh "git push origin master $params.VERSION"
             }
         }
         

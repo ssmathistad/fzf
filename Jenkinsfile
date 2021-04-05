@@ -22,9 +22,10 @@ pipeline {
             steps {
                 sh "git config --global user.email 'ssmathistad@mail.csuchico.edu'"
                 sh "git config --global user.name 'ssmathistad'"
-                sh "touch Jenkinsfile"
-                sh "git commit"
-                sh "git tag -a $params.VERSION -m $params.VERSIONMESSAGE"
+                //sh "touch Jenkinsfile"
+                //sh "git commit"
+                //sh "git tag -a $params.VERSION -m $params.VERSIONMESSAGE"
+                sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""
                 sh "git push origin $params.VERSION"
             }
         }

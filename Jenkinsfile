@@ -27,7 +27,7 @@ pipeline {
                 //sh "git tag -a $params.VERSION -m $params.VERSIONMESSAGE"
                 sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""
                 //sh "git remote add origin git@github.com:ssmathistad/fzf.git"
-                sh "git push origin $params.VERSION"
+                sh "git push origin master $params.VERSION"
             }
         }
         

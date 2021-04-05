@@ -20,8 +20,8 @@ pipeline {
         
         stage('Go Releaser tag creation') {
             steps {
-                sh "git config --global user.email 'ssmathistad@mail.csuchico.edu'"
-                sh "git config --global user.name 'ssmathistad'"
+                //sh "git config --global user.email 'ssmathistad@mail.csuchico.edu'"
+                //sh "git config --global user.name 'ssmathistad'"
                 //sh "touch Jenkinsfile"
                 //sh "git commit"
                 //sh "git tag -a $params.VERSION -m $params.VERSIONMESSAGE"

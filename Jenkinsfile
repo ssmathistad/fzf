@@ -27,7 +27,11 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh("git tag -a $params.VERSION -m '$params.VERSIONMESSAGE'")
                     // no sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@ssmathistad/fzf.git --tags'), cannot resolve url
-                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags')
+                    
+                    //sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags')
+                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git ${params.VERSION}')
+
+                    sh "/working_dir/bin/goreleaser release"
                 }
 
                 //////sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""
@@ -47,10 +51,10 @@ pipeline {
             }
         }
         
-        stage('Deploy Go Releaser binaries') {
-            steps {
-                sh "/working_dir/bin/goreleaser release"
-            }
-        }
+        //stage('Deploy Go Releaser binaries') {
+        //    steps {
+        //        sh "/working_dir/bin/goreleaser release"
+        //    }
+        //}
     }
 }

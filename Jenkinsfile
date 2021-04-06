@@ -49,7 +49,7 @@ pipeline {
         
         stage('Deploy Go Releaser binaries') {
             steps {
-                sh "goreleaser release"
+                sh "/working_dir/bin/goreleaser release"
             }
         }
     }

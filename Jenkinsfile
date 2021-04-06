@@ -22,7 +22,8 @@ pipeline {
             steps {
                 sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""
                 git credentialsId: 'github_token', url: 'https://github.com/ssmathistad/fzf.git'
-                git push
+                //git push
+                sh "git push"
 
                 //withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 ////withCredentials([usernamePassword(git credentialsId: 'github_token', url: 'https://github.com/ssmathistad/fzf.git')]) {

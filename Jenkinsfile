@@ -22,13 +22,20 @@ pipeline {
         
         stage('Go Releaser tag creation') {
             steps {
-                sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""
+
+
+                withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    sh("git tag -a $params.VERSION -m '$params.VERSIONMESSAGE'")
+                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO> --tags')
+                }
+
+                //////sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""
                 //git credentialsId: 'github_token', url: 'https://github.com/ssmathistad/fzf.git'
                 //// no git push credentialsId: 'github_token', url: 'git@github.com:ssmathistad/fzf.git'
                 
                 // git@github.com:ssmathistad/fzf.git
                 //git push
-                sh "git push"
+                /////////sh "git push"
 
                 //withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 ////withCredentials([usernamePassword(git credentialsId: 'github_token', url: 'https://github.com/ssmathistad/fzf.git')]) {

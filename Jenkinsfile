@@ -16,7 +16,7 @@ pipeline {
                 // Get some code from a GitHub repository
                 //git 'https://github.com/ssmathistad/fzf.git'
                 //git credentialsId: 'github_pw', url: 'git@github.com:ssmathistad/fzf.git'
-                git credentialsId: 'github_token', url: 'https://github.com/ssmathistad/fzf.git'
+                //git credentialsId: 'github_token', url: 'https://github.com/ssmathistad/fzf.git'
             }
         }
         
@@ -25,14 +25,16 @@ pipeline {
 
 
                 withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    git 'https://github.com/ssmathistad/fzf.git'
+
                     sh("git tag -a $params.VERSION -m '$params.VERSIONMESSAGE'")
                     // no sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@ssmathistad/fzf.git --tags'), cannot resolve url
                     
                     //sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags')
                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git ${params.VERSION}")
 
-                    //sh "/working_dir/bin/goreleaser release"
-                    sh "goreleaser release"
+                    sh "/working_dir/bin/goreleaser release"
+                    //sh "goreleaser release"
                 }
 
                 //////sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""

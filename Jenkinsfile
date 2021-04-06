@@ -15,7 +15,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 //git 'https://github.com/ssmathistad/fzf.git'
-                git credentialsId: 'github_token', url: 'git@github.com:ssmathistad/fzf.git'
+                git credentialsId: 'github_pw', url: 'git@github.com:ssmathistad/fzf.git'
             }
         }
         

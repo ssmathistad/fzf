@@ -26,7 +26,7 @@ pipeline {
 
                 withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh("git tag -a $params.VERSION -m '$params.VERSIONMESSAGE'")
-                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO> --tags')
+                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@ssmathistad/fzf.git --tags')
                 }
 
                 //////sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""

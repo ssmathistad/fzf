@@ -22,8 +22,7 @@ pipeline {
         //}
         
         stage('Go Releaser tag creation') {
-            steps {
-
+            //steps {
                 when {
                     buildingTag()
                 }
@@ -63,7 +62,7 @@ pipeline {
                     //sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/ssmathistad/fzf.git $params.VERSION"
                     ////sh "git push"
                 ////}
-            }
+            //}
         }
         
         //stage('Deploy Go Releaser binaries') {

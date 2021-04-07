@@ -24,7 +24,17 @@ pipeline {
         stage('Go Releaser tag creation') {
             steps {
 
+                when {
+                    buildingTag()
+                }
+                environment {
+                    GITHUB_TOKEN = credentials('repo_use_token')
+                }
+                steps {
+                    sh 'curl -sL https://git.io/goreleaser | bash'
+                }
 
+                /*
                 withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     git 'https://github.com/ssmathistad/fzf.git'
 
@@ -37,6 +47,7 @@ pipeline {
                     //sh "/working_dir/bin/goreleaser --snapshot"
                     sh("/working_dir/bin/goreleaser release")
                 }
+                */
 
                 //////sh "git tag -a $params.VERSION -m \"$params.VERSIONMESSAGE\""
                 //git credentialsId: 'github_token', url: 'https://github.com/ssmathistad/fzf.git'

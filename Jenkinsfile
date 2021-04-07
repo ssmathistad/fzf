@@ -32,7 +32,7 @@ pipeline {
                     
                     //sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags')
                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git ${params.VERSION}")
-
+                    sh("export PATH=$PATH:/working_dir/go/bin")
                     sh "/working_dir/bin/goreleaser --snapshot"
                     //sh "goreleaser release"
                 }

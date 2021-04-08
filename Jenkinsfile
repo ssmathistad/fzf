@@ -51,7 +51,7 @@ pipeline {
                         sh("git show")
                         //sh('git push origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags')
                         //sh("git push origin v0.26.${BUILD_NUMBER} https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git")
-                        sh("git push v0.26.${BUILD_NUMBER} https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git")
+                        sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags")
                         //sh("git fetch --tags")
                         sh("git show")
                         sh 'curl -sL https://git.io/goreleaser | bash'

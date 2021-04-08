@@ -48,8 +48,8 @@ pipeline {
                         sh "git config --global user.email ssmathistad@mail.csuchico.edu"
                         //sh "git tag -d $(git tag -l)"
                         //sh "git config --list --show-origin"
-                        sh("git tag -d v0.26.1")
-                        sh("git tag -d v0.26.2")
+                        //sh("git tag -d v0.26.1")
+                        //sh("git tag -d v0.26.2")
                         sh("git tag -a v0.27.${BUILD_NUMBER} -m \"Version Bumped\"")
                         sh("git show")
 

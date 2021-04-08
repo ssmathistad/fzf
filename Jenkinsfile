@@ -49,13 +49,11 @@ pipeline {
                         //sh "git config --list --show-origin"
                         sh("git tag -a v0.26.${BUILD_NUMBER} -m \"Version Bumped\"")
                         sh("git show")
-                        //sh('git push origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags')
-                        //sh("git push origin v0.26.${BUILD_NUMBER} https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git")
+
+                        sh("git remote add origin git@github.com:github.com/ssmathistad/fzf.git")
+
                         sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags")
-                        //sh("git fetch --tags")
-                        //sh("git show")
-                        //sh 'curl -sL https://git.io/goreleaser --snapshot | bash'
-                        //sh 'curl -sL https://git.io/goreleaser | bash --snapshot'
+
                         sh("/working_dir/bin/goreleaser --snapshot --rm-dist")
                     }
 

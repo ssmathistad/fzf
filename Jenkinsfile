@@ -8,7 +8,7 @@ pipeline {
 
     environment {
         GITHUB_TOKEN = credentials('repo_use_token')
-        PATH = "/working_dir/go/bin:$PATH"
+        PATH = "/working_dir/go/bin:/working_dir/bin/goreleaser:$PATH"
     }
 
     stages {
@@ -57,7 +57,8 @@ pipeline {
 
                         sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags")
 
-                        sh("/working_dir/bin/goreleaser --snapshot --rm-dist")
+                        //sh("/working_dir/bin/goreleaser --snapshot --rm-dist")
+                        sh("goreleaser --snapshot --rm-dist")
                     }
 
 

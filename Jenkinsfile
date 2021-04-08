@@ -23,9 +23,9 @@ pipeline {
         
         stage('Go Releaser tag creation') {
             //steps {
-                when {
-                    buildingTag()
-                }
+                //when {
+                //    buildingTag()
+                //}
                 environment {
                     GITHUB_TOKEN = credentials('repo_use_token')
                 }

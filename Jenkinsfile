@@ -42,9 +42,14 @@ pipeline {
                     GITHUB_TOKEN = credentials('repo_use_token')
                 }
                 steps {
-                    sh("git tag ${BUILD_NUMBER}")
-                    sh("git push --tags")
-                    sh 'curl -sL https://git.io/goreleaser | bash'
+
+                    withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        sh("git tag ${BUILD_NUMBER}")
+                        sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags')
+                        sh 'curl -sL https://git.io/goreleaser | bash'
+                    }
+
+
                 }
 
                 /*

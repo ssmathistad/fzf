@@ -1,10 +1,10 @@
 pipeline {
     agent any
     
-    parameters {
-        string(name: 'VERSION', defaultValue: 'v0.26')
-        string(name: 'VERSIONMESSAGE', defaultValue: 'Bumping version')
-    }
+    //parameters {
+    //    string(name: 'VERSION', defaultValue: 'v0.26')
+    //    string(name: 'VERSIONMESSAGE', defaultValue: 'Bumping version')
+    //}
 
     environment {
         GITHUB_TOKEN = credentials('repo_use_token')
@@ -20,6 +20,18 @@ pipeline {
                 //git credentialsId: 'github_token', url: 'https://github.com/ssmathistad/fzf.git'
             //}
         //}
+
+        stage('Compile') {
+            steps {
+                sh 'go build'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'go test ./...'
+            }
+        }
         
         stage('Go Releaser tag creation') {
             //steps {

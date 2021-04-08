@@ -47,7 +47,7 @@ pipeline {
                         sh "git config --global user.name ssmathistad"
                         sh "git config --global user.email ssmathistad@mail.csuchico.edu"
                         //sh "git config --list --show-origin"
-                        sh("git tag -a v0.26.${BUILD_NUMBER} -m \"Version Bumped\"")
+                        sh("git tag -a v0.27.${BUILD_NUMBER} -m \"Version Bumped\"")
                         sh("git show")
 
                         //sh("git remote add origin git@github.com:github.com/ssmathistad/fzf.git")

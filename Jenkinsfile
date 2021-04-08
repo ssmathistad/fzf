@@ -55,7 +55,8 @@ pipeline {
                         //sh("git fetch --tags")
                         //sh("git show")
                         //sh 'curl -sL https://git.io/goreleaser --snapshot | bash'
-                        sh 'curl -sL https://git.io/goreleaser | bash --snapshot'
+                        //sh 'curl -sL https://git.io/goreleaser | bash --snapshot'
+                        sh("/working_dir/bin/goreleaser --snapshot")
                     }
 
 

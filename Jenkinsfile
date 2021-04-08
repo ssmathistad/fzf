@@ -43,6 +43,7 @@ pipeline {
                 }
                 steps {
                     sh("git tag ${BUILD_NUMBER}")
+                    sh("git push --tags")
                     sh 'curl -sL https://git.io/goreleaser | bash'
                 }
 

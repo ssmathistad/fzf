@@ -44,8 +44,8 @@ pipeline {
                 steps {
 
                     withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        sh("git tag v0.26.${BUILD_NUMBER}")
-                        sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags')
+                        sh("git tag -a v0.26.${BUILD_NUMBER} 'Version Bumped'")
+                        sh('git push origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags')
                         sh("git fetch --tags")
                         sh 'curl -sL https://git.io/goreleaser | bash'
                     }

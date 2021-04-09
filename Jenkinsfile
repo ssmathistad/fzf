@@ -1,6 +1,11 @@
 pipeline {
 
-    agent any
+   agent any
+
+    environment {
+    GITHUB_TOKEN = credentials('repo_use_token')
+    PATH = "/working_dir/go/bin:/working_dir/bin/goreleaser:working_dir/bin:$PATH"
+    }
 
   stages {
     stage('Compile') {
@@ -20,9 +25,7 @@ pipeline {
         buildingTag()
       }
 
-      environment {
-        GITHUB_TOKEN = credentials('repo_use_token')
-      }
+
 
       steps {
         sh 'curl -sL https://git.io/goreleaser | bash'

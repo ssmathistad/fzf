@@ -66,7 +66,7 @@ pipeline {
 
                         //sh("git remote add origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/fzf.git")
 
-                        sh("git push v0.26.${BUILD_NUMBER} https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/fzf.git --tags");
+                        sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/fzf.git --tags");
 
                         //checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'PerBuildTag']], userRemoteConfigs: [[credentialsId: 'github_token', url: 'https://github.com/ssmathistad/fzf.git']]])
 

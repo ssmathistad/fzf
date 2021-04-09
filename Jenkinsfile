@@ -23,7 +23,7 @@ pipeline {
 
         stage('Compile') {
             steps {
-                sh("git clone 'https://github.com/ssmathistad/fzf.git'")
+                //sh("git clone 'https://github.com/ssmathistad/fzf.git'")
                 sh("pwd")
                 sh 'go build'
             }
@@ -56,6 +56,8 @@ pipeline {
                         sh("git tag -a v0.27.${BUILD_NUMBER} -m \"Version Bumped\"")
                         sh("git show")
                         //sh("git log --oneline --decorate=short")
+                        sh("pwd")
+                        sh("cd ${WORKSPACE}")
                         sh("pwd")
 
                         //sh("git remote add origin git@github.com:github.com/ssmathistad/fzf.git")

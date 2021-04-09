@@ -76,7 +76,7 @@ pipeline {
 
                         //sh("/working_dir/bin/goreleaser --snapshot --rm-dist")
                         //sh("/working_dir/bin/goreleaser v0.27.${BUILD_NUMBER}")//--snapshot --rm-dist")
-                        sh("./goreleaser.sh ") //v0.27.${BUILD_NUMBER}")
+                        sh("./goreleaser.sh release") //v0.27.${BUILD_NUMBER}")
 
                         //sh 'curl -sL https://git.io/goreleaser | bash --snapshot'
                     }

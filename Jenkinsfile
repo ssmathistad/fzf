@@ -64,9 +64,11 @@ pipeline {
                         //sh("pwd")
                         //sh("ls")
 
+                        sh("git push origin v0.26.${BUILD_NUMBER}");
+
                         //sh("git remote add origin git@github.com:github.com/ssmathistad/fzf.git")
 
-                        sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags")
+                        //sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags")
 
                         //sh("/working_dir/bin/goreleaser --snapshot --rm-dist")
                         sh("/working_dir/bin/goreleaser --snapshot --rm-dist")

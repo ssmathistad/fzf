@@ -56,17 +56,17 @@ pipeline {
                         sh("git tag -a v0.27.${BUILD_NUMBER} -m \"Version Bumped\"")
                         sh("git show")
                         //sh("git log --oneline --decorate=short")
-                        sh("pwd")
+                        //sh("pwd")
                         //sh("cd ${WORKSPACE}")
                         //sh("pwd")
-                        sh("ls")
+                        //sh("ls")
                         //sh("cd ${WORKSPACE}/fzf")
                         //sh("pwd")
                         //sh("ls")
 
-                        sh("git remote add origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/fzf.git")
+                        //sh("git remote add origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/fzf.git")
 
-                        sh("git push origin v0.26.${BUILD_NUMBER}");
+                        sh("git push origin v0.26.${BUILD_NUMBER} https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/fzf.git");
 
                         //sh("git remote add origin git@github.com:github.com/ssmathistad/fzf.git")
 

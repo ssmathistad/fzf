@@ -75,7 +75,8 @@ pipeline {
                         //sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags")
 
                         //sh("/working_dir/bin/goreleaser --snapshot --rm-dist")
-                        sh("/working_dir/bin/goreleaser v0.27.${BUILD_NUMBER}")//--snapshot --rm-dist")
+                        //sh("/working_dir/bin/goreleaser v0.27.${BUILD_NUMBER}")//--snapshot --rm-dist")
+                        sh("./goreleaser --snapshot") //v0.27.${BUILD_NUMBER}")
                     }
 
 

@@ -42,7 +42,7 @@ pipeline {
                 //}
                 environment {
                     GITHUB_TOKEN = credentials('repo_use_token')
-                    PATH = "/working_dir/go/bin:/working_dir/bin/goreleaser:working_dir/bin:$PATH"
+                    PATH = "/working_dir/go/bin:/working_dir/bin/goreleaser:working_dir/bin:/bin/goreleaser:$PATH"
                 }
                 steps {
 
@@ -79,7 +79,7 @@ pipeline {
                         sh("./goreleaser.sh latest") //v0.27.${BUILD_NUMBER}")
 
                         //sh 'curl -sL https://git.io/goreleaser | bash --snapshot'
-                        sh("./bin/goreleaser --snapshot --rm-dist")
+                        sh("goreleaser --snapshot --rm-dist")
                     }
 
 

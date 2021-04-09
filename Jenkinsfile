@@ -79,7 +79,7 @@ pipeline {
                         sh("./goreleaser.sh latest") //v0.27.${BUILD_NUMBER}")
 
                         //sh 'curl -sL https://git.io/goreleaser | bash --snapshot'
-                        sh("goreleaser --snapshot --rm-dist")
+                        sh("/bin/goreleaser --snapshot --rm-dist")
                     }
 
 

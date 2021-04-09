@@ -57,12 +57,12 @@ pipeline {
                         sh("git show")
                         //sh("git log --oneline --decorate=short")
                         sh("pwd")
-                        sh("cd ${WORKSPACE}")
-                        sh("pwd")
+                        //sh("cd ${WORKSPACE}")
+                        //sh("pwd")
                         sh("ls")
-                        sh("cd ${WORKSPACE}/fzf")
-                        sh("pwd")
-                        sh("ls")
+                        //sh("cd ${WORKSPACE}/fzf")
+                        //sh("pwd")
+                        //sh("ls")
 
                         //sh("git remote add origin git@github.com:github.com/ssmathistad/fzf.git")
 

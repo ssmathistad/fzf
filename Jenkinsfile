@@ -23,7 +23,7 @@ pipeline {
 
         stage('Compile') {
             steps {
-                sh("git 'https://github.com/ssmathistad/fzf.git'")
+                sh("git clone 'https://github.com/ssmathistad/fzf.git'")
                 sh("pwd")
                 sh 'go build'
             }

@@ -74,12 +74,13 @@ pipeline {
 
                         //sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ssmathistad/fzf.git --tags")
 
-                        //sh("/working_dir/bin/goreleaser --snapshot --rm-dist")
+                        ///////sh("/working_dir/bin/goreleaser --snapshot --rm-dist")
                         //sh("/working_dir/bin/goreleaser v0.27.${BUILD_NUMBER}")//--snapshot --rm-dist")
-                        sh("./goreleaser.sh latest") //v0.27.${BUILD_NUMBER}")
+                        ////sh("./goreleaser.sh latest") //v0.27.${BUILD_NUMBER}")
 
                         //sh 'curl -sL https://git.io/goreleaser | bash --snapshot'
-                        sh("/bin/goreleaser --snapshot --rm-dist")
+                        ////sh("./bin/goreleaser --snapshot --rm-dist")
+                        sh 'curl -sL https://git.io/goreleaser | bash'
                     }
 
 

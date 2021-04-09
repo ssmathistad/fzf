@@ -80,7 +80,7 @@ pipeline {
 
                         //sh 'curl -sL https://git.io/goreleaser | bash --snapshot'
                         ////sh("./bin/goreleaser --snapshot --rm-dist")
-                        sh 'curl -sL https://git.io/goreleaser | bash'
+                        sh 'source curl -sL https://git.io/goreleaser | bash'
                     }
 
 

@@ -23,7 +23,7 @@ pipeline {
     stage ('Release') {
 
       steps {
-        sh 'ls'
+        sh 'pwd'
         sh 'curl -sL https://git.io/goreleaser | sh'
       }
     }

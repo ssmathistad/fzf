@@ -10,7 +10,6 @@ pipeline {
   stages {
     stage('Compile') {
       steps {
-        sh 'git fetch --prune --unshallow'
         sh 'go build'
       }
     }

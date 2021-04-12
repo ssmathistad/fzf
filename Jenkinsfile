@@ -23,6 +23,9 @@ pipeline {
     stage ('Release') {
 
       steps {
+        when {
+            branch 'master'
+        }
         sh 'pwd'
         //sh 'curl -sL https://git.io/goreleaser | sh'
          sh 'goreleaser release --rm-dist'

@@ -24,7 +24,8 @@ pipeline {
 
       steps {
         sh 'pwd'
-        sh 'curl -sL https://git.io/goreleaser | sh'
+        //sh 'curl -sL https://git.io/goreleaser | sh'
+         sh 'goreleaser release --rm-dist'
       }
     }
   }

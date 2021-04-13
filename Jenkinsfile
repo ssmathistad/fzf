@@ -1,4 +1,4 @@
-def headcommit = 'true'
+def headcommit = true
 
 pipeline {
 
@@ -33,6 +33,7 @@ pipeline {
       when {
         branch 'master'
         //env.headcommit 'false'
+        headcommit false
         tag "v*.*.*"
       }
       steps {

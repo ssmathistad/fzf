@@ -1,3 +1,5 @@
+//def headcommit = 'true'
+
 pipeline {
 
   agent any
@@ -5,10 +7,7 @@ pipeline {
   environment {
     GITHUB_TOKEN = credentials('repo_use_token')
     PATH = "$PATH:/usr/local/go/bin" // gopath
-    HEADCOMMIT = sh (
-              returnStdout: true,
-              script: 'git fetch --all --tags && git tag --points-at HEAD | awk NF'
-              ).trim()
+    headcommit = true
   }
 
   stages {
@@ -33,7 +32,7 @@ pipeline {
     stage ('Release') {
       when {
         branch 'master'
-        HEADCOMMIT == false
+        env.headcommit == 'false'
         //tag "v*.*.*"
       }
       steps {

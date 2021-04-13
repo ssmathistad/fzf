@@ -5,7 +5,7 @@ pipeline {
   environment {
     GITHUB_TOKEN = credentials('repo_use_token')
     PATH = "$PATH:/usr/local/go/bin" // gopath
-    HEADCOMMIT = env.headTag = sh (
+    HEADCOMMIT = sh (
               returnStdout: true,
               script: 'git fetch --all --tags && git tag --points-at HEAD | awk NF'
               ).trim()

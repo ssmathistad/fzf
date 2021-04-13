@@ -28,6 +28,7 @@ pipeline {
     stage ('Release') {
       when {
         branch 'master'
+        tag "v*.*.*"
       }
       steps {
         sh 'goreleaser release --rm-dist'

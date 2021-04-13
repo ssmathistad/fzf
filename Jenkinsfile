@@ -13,7 +13,11 @@ pipeline {
          withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
             sh "git config --global user.name ssmathistad"
             sh "git config --global user.email ssmathistad@mail.csuchico.edu"
-            sh "git fetch --all --tags"
+            //sh "git fetch --all --tags"
+            env.headTag = sh (
+              returnStdout: true,
+              script: 'git fetch --all --tags && git tag --points-at HEAD | awk NF'
+            ).trim()
         }
         sh 'go build'
       }
@@ -28,9 +32,17 @@ pipeline {
     stage ('Release') {
       when {
         branch 'master'
+        env.headTag == false
         //tag "v*.*.*"
       }
       steps {
+         withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+            sh "git config --global user.name ssmathistad"
+            sh "git config --global user.email ssmathistad@mail.csuchico.edu"
+            sh "git tag v0.32.${BUILD_NUMBER}"
+            sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/fzf.git --tags");
+        }
+        
         sh 'goreleaser release --rm-dist'
       }
     }

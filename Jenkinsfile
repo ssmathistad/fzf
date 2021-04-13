@@ -32,7 +32,7 @@ pipeline {
     stage ('Release') {
       when {
         branch 'master'
-        env.headcommit == 'false'
+        env.headcommit 'false'
         //tag "v*.*.*"
       }
       steps {

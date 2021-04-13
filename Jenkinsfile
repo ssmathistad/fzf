@@ -10,11 +10,6 @@ pipeline {
   stages {
     stage('Compile') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-            sh "git config --global user.name ssmathistad"
-            sh "git config --global user.email ssmathistad@mail.csuchico.edu"
-            sh "git fetch --all --tags"
-        }
         sh 'go build'
       }
     }

@@ -4,7 +4,7 @@ pipeline {
 
   environment {
     GITHUB_TOKEN = credentials('repo_use_token')
-    PATH = "$PATH:/usr/local/go/bin"
+    PATH = "$PATH:/usr/local/go/bin" // gopath
   }
 
   stages {

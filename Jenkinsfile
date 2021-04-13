@@ -5,6 +5,10 @@ pipeline {
   environment {
     GITHUB_TOKEN = credentials('repo_use_token')
     PATH = "$PATH:/usr/local/go/bin" // gopath
+    HEADCOMMIT = env.headTag = sh (
+              returnStdout: true,
+              script: 'git fetch --all --tags && git tag --points-at HEAD | awk NF'
+              ).trim()
   }
 
   stages {
@@ -14,10 +18,7 @@ pipeline {
             sh "git config --global user.name ssmathistad"
             sh "git config --global user.email ssmathistad@mail.csuchico.edu"
             //sh "git fetch --all --tags"
-            env.headTag = sh (
-              returnStdout: true,
-              script: 'git fetch --all --tags && git tag --points-at HEAD | awk NF'
-            ).trim()
+
         }
         sh 'go build'
       }
@@ -32,7 +33,7 @@ pipeline {
     stage ('Release') {
       when {
         branch 'master'
-        env.headTag == false
+        HEADCOMMIT == false
         //tag "v*.*.*"
       }
       steps {

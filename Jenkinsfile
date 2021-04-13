@@ -1,4 +1,4 @@
-def headcommit = true
+//def headcommit = true
 
 pipeline {
 
@@ -17,7 +17,7 @@ pipeline {
             sh "git config --global user.name ssmathistad"
             sh "git config --global user.email ssmathistad@mail.csuchico.edu"
             sh "git fetch --all --tags"
-
+            sh "git tag --points-at HEAD"
         }
         sh 'go build'
       }
@@ -33,7 +33,7 @@ pipeline {
       when {
         branch 'master'
         //env.headcommit 'false'
-        headcommit false
+        //headcommit false
         tag "v*.*.*"
       }
       steps {

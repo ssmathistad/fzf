@@ -1,4 +1,4 @@
-//def headcommit = 'true'
+def headcommit = 'true'
 
 pipeline {
 
@@ -7,7 +7,7 @@ pipeline {
   environment {
     GITHUB_TOKEN = credentials('repo_use_token')
     PATH = "$PATH:/usr/local/go/bin" // gopath
-    headcommit = true
+    //headcommit = true
   }
 
   stages {
@@ -16,7 +16,7 @@ pipeline {
          withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
             sh "git config --global user.name ssmathistad"
             sh "git config --global user.email ssmathistad@mail.csuchico.edu"
-            //sh "git fetch --all --tags"
+            sh "git fetch --all --tags"
 
         }
         sh 'go build'
@@ -32,8 +32,8 @@ pipeline {
     stage ('Release') {
       when {
         branch 'master'
-        env.headcommit 'false'
-        //tag "v*.*.*"
+        //env.headcommit 'false'
+        tag "v*.*.*"
       }
       steps {
          withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {

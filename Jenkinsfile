@@ -31,6 +31,9 @@ pipeline {
         //tag "v*.*.*"
         //buildingTag()
       //}
+      when {
+        buildingTag()
+      }
       steps {
         sh 'goreleaser release --rm-dist'
       }

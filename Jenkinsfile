@@ -29,7 +29,7 @@ pipeline {
       when {
         branch 'master'
         //tag "v*.*.*"
-        buildingTag()
+        //buildingTag()
       }
       steps {
         sh 'goreleaser release --rm-dist'

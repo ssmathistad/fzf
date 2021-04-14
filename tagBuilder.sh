@@ -4,10 +4,11 @@
 GIT_COMMIT=`git rev-parse HEAD`
 NEEDS_TAG=`git describe --contains $GIT_COMMIT 2>/dev/null`
 NEW_TAG=$1
+NEW_MESSAGE=$2
 
 #only tag if no tag already
 if [ -z "$NEEDS_TAG" ]; then
-    git tag $NEW_TAG
+    git tag -a $NEW_TAG -m $NEW_MESSAGE
     echo "Tagged with $NEW_TAG"
     git describe
 else

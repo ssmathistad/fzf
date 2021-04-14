@@ -28,7 +28,7 @@ pipeline {
     stage ('Tagging') {
       steps {
         // Script that checks if there is/are tag(s) against HEAD and builds a tag if there isn't. Passes in the tag name as an argument.
-        sh "./tagBuilder.sh v0.32.${BUILD_NUMBER}"
+        sh "./tagBuilder.sh v0.32.${BUILD_NUMBER} ${JOB_NAME}"
     
         // Pushes any tag created by tagBuilder.sh, if any
         withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {

@@ -34,12 +34,11 @@ pipeline {
     
       
     stage ('Release') {
+      when {
+          branch 'master'
+          tag "v*.*.*"
+      }
       steps {
-        when {
-            branch 'master'
-            tag "v*.*.*"
-        }
-    
         // Pushes tag created by tagBuilder.sh
         withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
           sh "git config --global user.name ssmathistad"

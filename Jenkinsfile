@@ -24,13 +24,16 @@ pipeline {
         sh 'go test ./...'
       }
     }
+
+    stage ('Tagging') {
+      steps {
+        // Checks if there's a tag(s) against HEAD and builds a tag if there isn't. Pass in the tag name as an argument.
+        sh "./tagBuilder.sh v0.32.${BUILD_NUMBER}"
+      }
+    }
     
       
     stage ('Release') {
-    
-        // Checks if there's a tag(s) against HEAD and builds a tag if there isn't. Pass in the tag name as an argument.
-        sh "./tagBuilder.sh v0.32.${BUILD_NUMBER}"
-    
         when {
             branch 'master'
             tag "v*.*.*"

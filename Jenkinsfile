@@ -19,8 +19,7 @@ pipeline {
             sh "git config --global user.name ssmathistad"
             sh "git config --global user.email ssmathistad@mail.csuchico.edu"
             sh "git fetch --all --tags"
-            //sh "git tag --points-at HEAD"
-           sh "git "
+            sh "git tag --points-at HEAD"
         }
         sh 'go build'
       }
@@ -32,8 +31,8 @@ pipeline {
       }
     }
     
-    def tag = sh(returnStdout: false, script: "git tag --contains | head -1").trim()
-    if (!tag) {
+    //def tag = sh(returnStdout: false, script: "git tag --contains | head -1").trim()
+    //if (!tag) {
 
       
       stage ('Release') {

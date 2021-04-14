@@ -27,7 +27,7 @@ pipeline {
       
     stage ('Release') {
       when {
-        branch 'master'
+        ////branch 'master'
         //tag "v*.*.*"
         //buildingTag()
       }

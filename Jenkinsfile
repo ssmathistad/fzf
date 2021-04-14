@@ -55,7 +55,7 @@ pipeline {
           sh 'goreleaser release --rm-dist'
         }
 
-      }
+      //}
 
 
     }

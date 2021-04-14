@@ -34,6 +34,7 @@ pipeline {
     
       
     stage ('Release') {
+      steps {
         when {
             branch 'master'
             tag "v*.*.*"
@@ -41,13 +42,13 @@ pipeline {
     
         // Pushes tag created by tagBuilder.sh
         withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-        sh "git config --global user.name ssmathistad"
-        sh "git config --global user.email ssmathistad@mail.csuchico.edu"
-        sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/fzf.git --tags");
+          sh "git config --global user.name ssmathistad"
+          sh "git config --global user.email ssmathistad@mail.csuchico.edu"
+          sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/fzf.git --tags");
         }
 
         sh 'goreleaser release --rm-dist'
-
+      }
     }
   }
 }

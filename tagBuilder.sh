@@ -9,6 +9,7 @@ NEW_TAG=$1
 if [ -z "$NEEDS_TAG" ]; then
     git tag $NEW_TAG
     echo "Tagged with $NEW_TAG"
+    git describe
 else
     echo "Already a tag on this commit"
 fi

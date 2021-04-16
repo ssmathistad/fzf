@@ -3,8 +3,8 @@ pipeline {
   agent any
 
   environment {
-    GITHUB_TOKEN = credentials('repo_use_token')
-    PATH = "$PATH:/usr/local/go/bin" // gopath
+    GITHUB_TOKEN = credentials('repo_use_token') // GitHub token
+    PATH = "$PATH:/usr/local/go/bin" // Go path
   }
 
   stages {
